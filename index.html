@@ -109,7 +109,7 @@ margin-top:10px;
 cursor:pointer;
 }
 
-/* 🔥 ZOOM */
+/* ZOOM */
 #zoomBox{
 display:none;
 position:fixed;
@@ -272,12 +272,17 @@ app.innerHTML=html;
 
 render();
 
-// WHATSAPP + CARRUSEL
+/* WHATSAPP + CARRUSEL */
 document.addEventListener("click",e=>{
 
 if(e.target.classList.contains("pedir")){
 let name=e.target.closest(".card").querySelector("h3").innerText;
-window.open("https://wa.me/523329166067?text="+encodeURIComponent("Quiero el "+name));
+
+window.open("https://wa.me/523329166067?text="+encodeURIComponent(
+"Hola me interesa el producto: " + name +
+"\n¿Aún lo tienes disponible?😊"
+));
+
 }
 
 if(e.target.classList.contains("next")){
@@ -298,16 +303,13 @@ imgs[(i-1+imgs.length)%imgs.length].classList.add("active");
 
 });
 
-// 🔥 ZOOM (NUEVO SIN ROMPER NADA)
+// ZOOM
 const zoomBox=document.createElement("div");
 zoomBox.id="zoomBox";
-zoomBox.style=`position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:9999;cursor:zoom-out;`;
-
-const zoomImg=document.createElement("img");
-zoomImg.style=`max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 0 25px rgba(255,255,255,.25);`;
-
-zoomBox.appendChild(zoomImg);
+zoomBox.innerHTML=`<img>`;
 document.body.appendChild(zoomBox);
+
+const zoomImg=zoomBox.querySelector("img");
 
 document.addEventListener("click",e=>{
 if(e.target.tagName==="IMG" && e.target.closest(".slider")){
