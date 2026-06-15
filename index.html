@@ -3,131 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NEXORA</title>
+<title>NEXORA PRO</title>
 
 <style>
 body{
-font-family:Arial,sans-serif;
 margin:0;
-background-image:url('fondo.png');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+font-family:Arial;
+background:#0b1220;
+color:white;
 }
 
 /* HEADER */
 header{
-background:#111827;
-color:white;
-padding:25px;
 text-align:center;
+padding:20px;
+background:#111827;
 }
 
-/* BOTONES CATEGORÍAS */
+/* MENU */
 .menu{
 display:flex;
 flex-wrap:wrap;
-gap:10px;
 justify-content:center;
+gap:10px;
 padding:15px;
 background:#0f172a;
+position:sticky;
+top:0;
+z-index:10;
 }
 
 .menu button{
 background:#2563eb;
-color:white;
 border:none;
-padding:10px 12px;
+padding:10px;
 border-radius:8px;
+color:white;
 font-weight:bold;
 cursor:pointer;
 }
 
 /* SECCIONES */
-.section{
-display:none;
-padding:10px 0;
-}
+.section{display:none;padding:20px;}
+.section.active{display:block;}
 
-.section.active{
-display:block;
-}
-
-.section-title{
-text-align:center;
-color:white;
-margin:20px 0;
-}
+h2{text-align:center;margin:10px 0;}
 
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-padding:25px;
+gap:15px;
 }
 
+/* CARD */
 .card{
 background:white;
+color:black;
 border-radius:15px;
-padding:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
-}
-
-.btn{
-display:inline-block;
-background:#25D366;
-color:white;
-padding:10px 14px;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
+padding:10px;
 }
 
 /* CARRUSEL */
-.slider{
-position:relative;
-}
-
+.slider{position:relative;}
 .slider img{
 width:100%;
 height:180px;
 object-fit:cover;
-border-radius:8px;
+border-radius:10px;
 display:none;
 }
-
-.slider img.active{
-display:block;
-}
+.slider img.active{display:block;}
 
 .slider button{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-background:rgba(0,0,0,0.5);
-color:white;
 border:none;
-padding:6px 10px;
+background:black;
+color:white;
 border-radius:50%;
+padding:6px;
 cursor:pointer;
 }
-
 .prev{left:5px;}
 .next{right:5px;}
 
+/* BOTON */
+.btn{
+display:block;
+text-align:center;
+background:#25D366;
+color:white;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
+font-weight:bold;
+text-decoration:none;
+}
+
+.top{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2563eb;
+color:white;
+border:none;
+padding:10px;
+border-radius:50%;
+cursor:pointer;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🛍️ NEXORA</h1>
-<p>Selecciona una categoría</p>
+<h1>NEXORA PRO 🛍️</h1>
+<p>Tienda completa profesional</p>
 </header>
 
-<!-- CATEGORÍAS -->
+<!-- MENU -->
 <div class="menu">
 <button onclick="openCat('sudaderas')">Sudaderas</button>
 <button onclick="openCat('camisas')">Camisas</button>
@@ -135,116 +131,139 @@ cursor:pointer;
 <button onclick="openCat('perfumes')">Perfumes</button>
 <button onclick="openCat('gorras')">Gorras</button>
 <button onclick="openCat('tenis')">Tenis</button>
-<button onclick="openCat('originales')">Perfumes Originales</button>
-</div>
-
-<!-- SUDADERAS -->
-<div id="sudaderas" class="section active">
-<h2 class="section-title">Sudaderas</h2>
-<div class="grid">
-
-<div class="card">
-<div class="slider">
-<button class="prev">◀</button>
-<img class="active" src="producto1.png">
-<img src="producto1b.png">
-<img src="producto1c.png">
-<button class="next">▶</button>
-</div>
-<h3>Sudadera 1</h3>
-<p>$999</p>
-<a class="btn pedir">Pedir</a>
-</div>
-
-</div>
-</div>
-
-<!-- CAMISAS -->
-<div id="camisas" class="section">
-<h2 class="section-title">Camisas</h2>
-<div class="grid"></div>
-</div>
-
-<!-- SHORTS -->
-<div id="shorts" class="section">
-<h2 class="section-title">Shorts</h2>
-<div class="grid"></div>
-</div>
-
-<!-- PERFUMES -->
-<div id="perfumes" class="section">
-<h2 class="section-title">Perfumes</h2>
-<div class="grid"></div>
-</div>
-
-<!-- GORRAS -->
-<div id="gorras" class="section">
-<h2 class="section-title">Gorras</h2>
-<div class="grid"></div>
-</div>
-
-<!-- TENIS -->
-<div id="tenis" class="section">
-<h2 class="section-title">Tenis</h2>
-<div class="grid"></div>
-</div>
-
-<!-- ORIGINALES -->
-<div id="originales" class="section">
-<h2 class="section-title">Perfumes Originales</h2>
-<div class="grid"></div>
+<button onclick="openCat('originales')">Originales</button>
 </div>
 
 <script>
-
-/* CAMBIAR CATEGORÍA */
 function openCat(id){
-document.querySelectorAll('.section').forEach(s=>{
-s.classList.remove('active');
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+
+<!-- ====================== FUNCION PRODUCTO ====================== -->
+<script>
+function productCard(cat, n){
+return `
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+
+    <img class="active" src="${cat}${n}-1.png">
+    <img src="${cat}${n}-2.png">
+    <img src="${cat}${n}-3.png">
+
+    <button class="next">▶</button>
+  </div>
+
+  <h3>${cat.toUpperCase()} Producto ${n}</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+`;
+}
+</script>
+
+<!-- ====================== SUDADERAS ====================== -->
+<div id="sudaderas" class="section active">
+<h2>Sudaderas</h2>
+<div class="grid" id="sudaderasGrid"></div>
+</div>
+
+<!-- ====================== CAMISAS ====================== -->
+<div id="camisas" class="section">
+<h2>Camisas</h2>
+<div class="grid" id="camisasGrid"></div>
+</div>
+
+<!-- ====================== SHORTS ====================== -->
+<div id="shorts" class="section">
+<h2>Shorts</h2>
+<div class="grid" id="shortsGrid"></div>
+</div>
+
+<!-- ====================== PERFUMES ====================== -->
+<div id="perfumes" class="section">
+<h2>Perfumes</h2>
+<div class="grid" id="perfumesGrid"></div>
+</div>
+
+<!-- ====================== GORRAS ====================== -->
+<div id="gorras" class="section">
+<h2>Gorras</h2>
+<div class="grid" id="gorrasGrid"></div>
+</div>
+
+<!-- ====================== TENIS ====================== -->
+<div id="tenis" class="section">
+<h2>Tenis</h2>
+<div class="grid" id="tenisGrid"></div>
+</div>
+
+<!-- ====================== ORIGINALES ====================== -->
+<div id="originales" class="section">
+<h2>Originales</h2>
+<div class="grid" id="originalesGrid"></div>
+</div>
+
+<!-- BOTON TOP -->
+<button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const categories = ["sudaderas","camisas","shorts","perfumes","gorras","tenis","originales"];
+
+// CREAR 10 PRODUCTOS POR CATEGORÍA
+categories.forEach(cat=>{
+  let grid = document.getElementById(cat+"Grid");
+  let html = "";
+
+  for(let i=1;i<=10;i++){
+    html += productCard(cat,i);
+  }
+
+  grid.innerHTML = html;
 });
-document.getElementById(id).classList.add('active');
+
+
+// WHATSAPP + CARRUSEL
+document.addEventListener("click", function(e){
+
+// WHATSAPP
+if(e.target.classList.contains("pedir")){
+  let card = e.target.closest(".card");
+  let name = card.querySelector("h3").innerText;
+
+  window.open(
+    `https://wa.me/523329166067?text=${encodeURIComponent("Hola quiero el " + name)}`
+  );
 }
 
-/* WHATSAPP + CARRUSEL */
-document.querySelectorAll(".card").forEach(card => {
+// NEXT
+if(e.target.classList.contains("next")){
+  let slider = e.target.closest(".slider");
+  let imgs = slider.querySelectorAll("img");
 
-const nombre = card.querySelector("h3").innerText;
-const btn = card.querySelector(".pedir");
-
-if(btn){
-btn.addEventListener("click", () => {
-const url = `https://wa.me/523329166067?text=${encodeURIComponent("Hola quiero el " + nombre)}`;
-window.open(url, "_blank");
-});
+  let active = [...imgs].findIndex(i=>i.classList.contains("active"));
+  imgs[active].classList.remove("active");
+  imgs[(active+1)%imgs.length].classList.add("active");
 }
 
-const slider = card.querySelector(".slider");
-if(!slider) return;
+// PREV
+if(e.target.classList.contains("prev")){
+  let slider = e.target.closest(".slider");
+  let imgs = slider.querySelectorAll("img");
 
-const imgs = slider.querySelectorAll("img");
-const prev = slider.querySelector(".prev");
-const next = slider.querySelector(".next");
+  let active = [...imgs].findIndex(i=>i.classList.contains("active"));
+  imgs[active].classList.remove("active");
 
-let index = 0;
+  let newIndex = active-1;
+  if(newIndex<0)newIndex=imgs.length-1;
 
-function show(i){
-imgs.forEach(img => img.classList.remove("active"));
-imgs[i].classList.add("active");
+  imgs[newIndex].classList.add("active");
 }
 
-next?.addEventListener("click", ()=> {
-index = (index + 1) % imgs.length;
-show(index);
 });
-
-prev?.addEventListener("click", ()=> {
-index = (index - 1 + imgs.length) % imgs.length;
-show(index);
-});
-
-show(index);
-});
-
 </script>
 
 </body>
