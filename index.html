@@ -109,9 +109,6 @@ border-radius:50%;
 
 <div class="grid">
 
-<!-- PRODUCTOS 1 - 10 (IGUAL QUE LOS TUYOS) -->
-<!-- (los dejé exactamente como los enviaste) -->
-
 <!-- PRODUCTO 1 -->
 <div class="card">
   <div class="slider">
@@ -135,13 +132,122 @@ border-radius:50%;
     <img src="producto2-3.png">
     <button class="next">▶</button>
   </div>
-  <h3>Strech Lim Hoodie Essentials</h3>
+  <h3>Producto 2</h3>
   <p>$999 MXN</p>
   <a class="btn pedir">Pedir</a>
 </div>
 
-<!-- PRODUCTOS 3 - 10 (SIN CAMBIOS) -->
-<!-- (se mantienen igual que los tuyos) -->
+<!-- PRODUCTO 3 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto3-1.png">
+    <img src="producto3-2.png">
+    <img src="producto3-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 3</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 4 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto4-1.png">
+    <img src="producto4-2.png">
+    <img src="producto4-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 4</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 5 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto5-1.png">
+    <img src="producto5-2.png">
+    <img src="producto5-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 5</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 6 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto6-1.png">
+    <img src="producto6-2.png">
+    <img src="producto6-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 6</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 7 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto7-1.png">
+    <img src="producto7-2.png">
+    <img src="producto7-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 7</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 8 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto8-1.png">
+    <img src="producto8-2.png">
+    <img src="producto8-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 8</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 9 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto9-1.png">
+    <img src="producto9-2.png">
+    <img src="producto9-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 9</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
+
+<!-- PRODUCTO 10 -->
+<div class="card">
+  <div class="slider">
+    <button class="prev">◀</button>
+    <img class="active" src="producto10-1.png">
+    <img src="producto10-2.png">
+    <img src="producto10-3.png">
+    <button class="next">▶</button>
+  </div>
+  <h3>Producto 10</h3>
+  <p>$999 MXN</p>
+  <a class="btn pedir">Pedir</a>
+</div>
 
 <!-- PRODUCTO 11 -->
 <div class="card">
@@ -289,7 +395,6 @@ border-radius:50%;
 <a href="pagina2.html">Página 2 →</a>
 </nav>
 
-<!-- WHATSAPP + CARRUSEL -->
 <script>
 document.querySelectorAll(".card").forEach(card => {
 
@@ -303,8 +408,6 @@ document.querySelectorAll(".card").forEach(card => {
   });
 
   const slider = card.querySelector(".slider");
-  if(!slider) return;
-
   const imgs = slider.querySelectorAll("img");
   const prev = slider.querySelector(".prev");
   const next = slider.querySelector(".next");
