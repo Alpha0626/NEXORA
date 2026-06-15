@@ -3,59 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NEXORA PRO</title>
+<title>NEXORA</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#0b1220;color:white;}
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background-image:url('fondo.png');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
 
-header{text-align:center;padding:20px;background:#111827;}
+header{
+background:#111827;
+color:white;
+padding:30px;
+text-align:center;
+}
 
 .menu{
-display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
-padding:10px;background:#0f172a;position:sticky;top:0;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+padding:10px;
+background:#0f172a;
+position:sticky;
+top:0;
 }
 
 .menu button{
-background:#2563eb;border:none;color:white;
-padding:10px;border-radius:8px;font-weight:bold;cursor:pointer;
+background:#2563eb;
+border:none;
+color:white;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
 }
 
-.section{display:none;padding:20px;}
-.section.active{display:block;}
+.section{
+display:none;
+padding:25px;
+}
 
-h2{text-align:center;}
+.section.active{
+display:block;
+}
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
+gap:25px;
 }
 
 .card{
-background:white;color:black;
-border-radius:15px;padding:10px;
+background:white;
+border-radius:15px;
+padding:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
-.slider{position:relative;}
-.slider img{
-width:100%;height:180px;object-fit:cover;
-border-radius:10px;display:none;
+.slider{
+position:relative;
 }
-.slider img.active{display:block;}
+
+.slider img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:8px;
+display:none;
+}
+
+.slider img.active{
+display:block;
+}
 
 .slider button{
-position:absolute;top:50%;transform:translateY(-50%);
-border:none;background:black;color:white;
-border-radius:50%;padding:6px;cursor:pointer;
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+color:white;
+border:none;
+padding:6px 10px;
+cursor:pointer;
+border-radius:50%;
 }
-.prev{left:5px;}
-.next{right:5px;}
+
+.prev{ left:5px; }
+.next{ right:5px; }
 
 .btn{
-display:block;text-align:center;
-background:#25D366;color:white;
-padding:10px;margin-top:10px;
-border-radius:8px;text-decoration:none;
+display:inline-block;
+background:#25D366;
+color:white;
+padding:10px 14px;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+margin-top:10px;
+cursor:pointer;
 }
 </style>
 </head>
@@ -63,7 +113,7 @@ border-radius:8px;text-decoration:none;
 <body>
 
 <header>
-<h1>NEXORA 🛍️</h1>
+<h1>🛍️ NEXORA</h1>
 </header>
 
 <!-- MENÚ -->
@@ -74,18 +124,16 @@ border-radius:8px;text-decoration:none;
 <button onclick="openCat('perfumes')">Perfumes</button>
 <button onclick="openCat('gorras')">Gorras</button>
 <button onclick="openCat('tenis')">Tenis</button>
-<button onclick="openCat('originales')">Originales</button>
 </div>
 
 <script>
 function openCat(id){
 document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
 document.getElementById(id).classList.add("active");
-window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
 
-<!-- ================== DATOS (FÁCIL DE EDITAR) ================== -->
+<!-- ================= DATA ================= -->
 
 <script>
 const data = {
@@ -100,7 +148,7 @@ sudaderas: [
 {nombre:"Sudadera 7",precio:"$999 MXN",img:["s7-1.png","s7-2.png","s7-3.png"]},
 {nombre:"Sudadera 8",precio:"$999 MXN",img:["s8-1.png","s8-2.png","s8-3.png"]},
 {nombre:"Sudadera 9",precio:"$999 MXN",img:["s9-1.png","s9-2.png","s9-3.png"]},
-{nombre:"Sudadera 10",precio:"$999 MXN",img:["s10-1.png","s10-2.png","s10-3.png"]},
+{nombre:"Sudadera 10",precio:"$999 MXN",img:["s10-1.png","s10-2.png","s10-3.png"]}
 ],
 
 camisas: [
@@ -113,37 +161,79 @@ camisas: [
 {nombre:"Camisa 7",precio:"$799 MXN",img:["c7-1.png","c7-2.png","c7-3.png"]},
 {nombre:"Camisa 8",precio:"$799 MXN",img:["c8-1.png","c8-2.png","c8-3.png"]},
 {nombre:"Camisa 9",precio:"$799 MXN",img:["c9-1.png","c9-2.png","c9-3.png"]},
-{nombre:"Camisa 10",precio:"$799 MXN",img:["c10-1.png","c10-2.png","c10-3.png"]},
+{nombre:"Camisa 10",precio:"$799 MXN",img:["c10-1.png","c10-2.png","c10-3.png"]}
 ],
 
-shorts: [],
-perfumes: [],
-gorras: [],
-tenis: [],
-originales: []
+shorts: [
+{nombre:"Short 1",precio:"$699 MXN",img:["sh1-1.png","sh1-2.png","sh1-3.png"]},
+{nombre:"Short 2",precio:"$699 MXN",img:["sh2-1.png","sh2-2.png","sh2-3.png"]},
+{nombre:"Short 3",precio:"$699 MXN",img:["sh3-1.png","sh3-2.png","sh3-3.png"]},
+{nombre:"Short 4",precio:"$699 MXN",img:["sh4-1.png","sh4-2.png","sh4-3.png"]},
+{nombre:"Short 5",precio:"$699 MXN",img:["sh5-1.png","sh5-2.png","sh5-3.png"]},
+{nombre:"Short 6",precio:"$699 MXN",img:["sh6-1.png","sh6-2.png","sh6-3.png"]},
+{nombre:"Short 7",precio:"$699 MXN",img:["sh7-1.png","sh7-2.png","sh7-3.png"]},
+{nombre:"Short 8",precio:"$699 MXN",img:["sh8-1.png","sh8-2.png","sh8-3.png"]},
+{nombre:"Short 9",precio:"$699 MXN",img:["sh9-1.png","sh9-2.png","sh9-3.png"]},
+{nombre:"Short 10",precio:"$699 MXN",img:["sh10-1.png","sh10-2.png","sh10-3.png"]}
+],
+
+perfumes: [
+{nombre:"Perfume 1",precio:"$1299 MXN",img:["p1-1.png","p1-2.png","p1-3.png"]},
+{nombre:"Perfume 2",precio:"$1299 MXN",img:["p2-1.png","p2-2.png","p2-3.png"]},
+{nombre:"Perfume 3",precio:"$1299 MXN",img:["p3-1.png","p3-2.png","p3-3.png"]},
+{nombre:"Perfume 4",precio:"$1299 MXN",img:["p4-1.png","p4-2.png","p4-3.png"]},
+{nombre:"Perfume 5",precio:"$1299 MXN",img:["p5-1.png","p5-2.png","p5-3.png"]},
+{nombre:"Perfume 6",precio:"$1299 MXN",img:["p6-1.png","p6-2.png","p6-3.png"]},
+{nombre:"Perfume 7",precio:"$1299 MXN",img:["p7-1.png","p7-2.png","p7-3.png"]},
+{nombre:"Perfume 8",precio:"$1299 MXN",img:["p8-1.png","p8-2.png","p8-3.png"]},
+{nombre:"Perfume 9",precio:"$1299 MXN",img:["p9-1.png","p9-2.png","p9-3.png"]},
+{nombre:"Perfume 10",precio:"$1299 MXN",img:["p10-1.png","p10-2.png","p10-3.png"]}
+],
+
+gorras: [
+{nombre:"Gorra 1",precio:"$499 MXN",img:["g1-1.png","g1-2.png","g1-3.png"]},
+{nombre:"Gorra 2",precio:"$499 MXN",img:["g2-1.png","g2-2.png","g2-3.png"]},
+{nombre:"Gorra 3",precio:"$499 MXN",img:["g3-1.png","g3-2.png","g3-3.png"]},
+{nombre:"Gorra 4",precio:"$499 MXN",img:["g4-1.png","g4-2.png","g4-3.png"]},
+{nombre:"Gorra 5",precio:"$499 MXN",img:["g5-1.png","g5-2.png","g5-3.png"]},
+{nombre:"Gorra 6",precio:"$499 MXN",img:["g6-1.png","g6-2.png","g6-3.png"]},
+{nombre:"Gorra 7",precio:"$499 MXN",img:["g7-1.png","g7-2.png","g7-3.png"]},
+{nombre:"Gorra 8",precio:"$499 MXN",img:["g8-1.png","g8-2.png","g8-3.png"]},
+{nombre:"Gorra 9",precio:"$499 MXN",img:["g9-1.png","g9-2.png","g9-3.png"]},
+{nombre:"Gorra 10",precio:"$499 MXN",img:["g10-1.png","g10-2.png","g10-3.png"]}
+],
+
+tenis: [
+{nombre:"Tenis 1",precio:"$1499 MXN",img:["t1-1.png","t1-2.png","t1-3.png"]},
+{nombre:"Tenis 2",precio:"$1499 MXN",img:["t2-1.png","t2-2.png","t2-3.png"]},
+{nombre:"Tenis 3",precio:"$1499 MXN",img:["t3-1.png","t3-2.png","t3-3.png"]},
+{nombre:"Tenis 4",precio:"$1499 MXN",img:["t4-1.png","t4-2.png","t4-3.png"]},
+{nombre:"Tenis 5",precio:"$1499 MXN",img:["t5-1.png","t5-2.png","t5-3.png"]},
+{nombre:"Tenis 6",precio:"$1499 MXN",img:["t6-1.png","t6-2.png","t6-3.png"]},
+{nombre:"Tenis 7",precio:"$1499 MXN",img:["t7-1.png","t7-2.png","t7-3.png"]},
+{nombre:"Tenis 8",precio:"$1499 MXN",img:["t8-1.png","t8-2.png","t8-3.png"]},
+{nombre:"Tenis 9",precio:"$1499 MXN",img:["t9-1.png","t9-2.png","t9-3.png"]},
+{nombre:"Tenis 10",precio:"$1499 MXN",img:["t10-1.png","t10-2.png","t10-3.png"]}
+]
 
 };
 </script>
 
-<!-- ================== SECCIONES ================== -->
-
-<div id="sudaderas" class="section active"><h2>Sudaderas</h2><div class="grid" id="sudaderasGrid"></div></div>
-<div id="camisas" class="section"><h2>Camisas</h2><div class="grid" id="camisasGrid"></div></div>
-<div id="shorts" class="section"><h2>Shorts</h2><div class="grid" id="shortsGrid"></div></div>
-<div id="perfumes" class="section"><h2>Perfumes</h2><div class="grid" id="perfumesGrid"></div></div>
-<div id="gorras" class="section"><h2>Gorras</h2><div class="grid" id="gorrasGrid"></div></div>
-<div id="tenis" class="section"><h2>Tenis</h2><div class="grid" id="tenisGrid"></div></div>
-<div id="originales" class="section"><h2>Originales</h2><div class="grid" id="originalesGrid"></div></div>
+<!-- RENDER -->
+<div id="app"></div>
 
 <script>
-const cats = Object.keys(data);
+const app = document.getElementById("app");
 
-cats.forEach(cat=>{
-let grid = document.getElementById(cat+"Grid");
-let html="";
+function render(){
+let html = "";
 
-data[cat].forEach(p=>{
-html+=`
+for(let cat in data){
+html += `
+<div id="${cat}" class="section">
+<h2>${cat.toUpperCase()}</h2>
+<div class="grid">
+${data[cat].map(p=>`
 <div class="card">
   <div class="slider">
     <button class="prev">◀</button>
@@ -157,13 +247,18 @@ html+=`
   <p>${p.precio}</p>
   <a class="btn pedir">Pedir</a>
 </div>
+`).join("")}
+</div>
+</div>
 `;
-});
+}
 
-grid.innerHTML=html;
-});
+app.innerHTML = html;
+}
 
-// WHATSAPP + CARRUSEL
+render();
+
+// WhatsApp + carrusel
 document.addEventListener("click",e=>{
 
 if(e.target.classList.contains("pedir")){
