@@ -75,6 +75,7 @@ height:180px;
 object-fit:cover;
 border-radius:8px;
 display:none;
+cursor:zoom-in;
 }
 
 .slider img.active{
@@ -107,6 +108,28 @@ font-weight:bold;
 margin-top:10px;
 cursor:pointer;
 }
+
+/* 🔥 ZOOM */
+#zoomBox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+cursor:zoom-out;
+}
+
+#zoomBox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+box-shadow:0 0 25px rgba(255,255,255,0.25);
+}
 </style>
 </head>
 
@@ -133,12 +156,10 @@ document.getElementById(id).classList.add("active");
 }
 </script>
 
-<!-- ================= DATA ================= -->
-
+<!-- DATA -->
 <script>
 const data = {
-
-sudaderas: [
+sudaderas:[
 {nombre:"Sudadera 1",precio:"$999 MXN",img:["s1-1.png","s1-2.png","s1-3.png"]},
 {nombre:"Sudadera 2",precio:"$999 MXN",img:["s2-1.png","s2-2.png","s2-3.png"]},
 {nombre:"Sudadera 3",precio:"$999 MXN",img:["s3-1.png","s3-2.png","s3-3.png"]},
@@ -150,8 +171,7 @@ sudaderas: [
 {nombre:"Sudadera 9",precio:"$999 MXN",img:["s9-1.png","s9-2.png","s9-3.png"]},
 {nombre:"Sudadera 10",precio:"$999 MXN",img:["s10-1.png","s10-2.png","s10-3.png"]}
 ],
-
-camisas: [
+camisas:[
 {nombre:"Camisa 1",precio:"$799 MXN",img:["c1-1.png","c1-2.png","c1-3.png"]},
 {nombre:"Camisa 2",precio:"$799 MXN",img:["c2-1.png","c2-2.png","c2-3.png"]},
 {nombre:"Camisa 3",precio:"$799 MXN",img:["c3-1.png","c3-2.png","c3-3.png"]},
@@ -163,8 +183,7 @@ camisas: [
 {nombre:"Camisa 9",precio:"$799 MXN",img:["c9-1.png","c9-2.png","c9-3.png"]},
 {nombre:"Camisa 10",precio:"$799 MXN",img:["c10-1.png","c10-2.png","c10-3.png"]}
 ],
-
-shorts: [
+shorts:[
 {nombre:"Short 1",precio:"$699 MXN",img:["sh1-1.png","sh1-2.png","sh1-3.png"]},
 {nombre:"Short 2",precio:"$699 MXN",img:["sh2-1.png","sh2-2.png","sh2-3.png"]},
 {nombre:"Short 3",precio:"$699 MXN",img:["sh3-1.png","sh3-2.png","sh3-3.png"]},
@@ -176,8 +195,7 @@ shorts: [
 {nombre:"Short 9",precio:"$699 MXN",img:["sh9-1.png","sh9-2.png","sh9-3.png"]},
 {nombre:"Short 10",precio:"$699 MXN",img:["sh10-1.png","sh10-2.png","sh10-3.png"]}
 ],
-
-perfumes: [
+perfumes:[
 {nombre:"Perfume 1",precio:"$1299 MXN",img:["p1-1.png","p1-2.png","p1-3.png"]},
 {nombre:"Perfume 2",precio:"$1299 MXN",img:["p2-1.png","p2-2.png","p2-3.png"]},
 {nombre:"Perfume 3",precio:"$1299 MXN",img:["p3-1.png","p3-2.png","p3-3.png"]},
@@ -189,8 +207,7 @@ perfumes: [
 {nombre:"Perfume 9",precio:"$1299 MXN",img:["p9-1.png","p9-2.png","p9-3.png"]},
 {nombre:"Perfume 10",precio:"$1299 MXN",img:["p10-1.png","p10-2.png","p10-3.png"]}
 ],
-
-gorras: [
+gorras:[
 {nombre:"Gorra 1",precio:"$499 MXN",img:["g1-1.png","g1-2.png","g1-3.png"]},
 {nombre:"Gorra 2",precio:"$499 MXN",img:["g2-1.png","g2-2.png","g2-3.png"]},
 {nombre:"Gorra 3",precio:"$499 MXN",img:["g3-1.png","g3-2.png","g3-3.png"]},
@@ -202,8 +219,7 @@ gorras: [
 {nombre:"Gorra 9",precio:"$499 MXN",img:["g9-1.png","g9-2.png","g9-3.png"]},
 {nombre:"Gorra 10",precio:"$499 MXN",img:["g10-1.png","g10-2.png","g10-3.png"]}
 ],
-
-tenis: [
+tenis:[
 {nombre:"Tenis 1",precio:"$1499 MXN",img:["t1-1.png","t1-2.png","t1-3.png"]},
 {nombre:"Tenis 2",precio:"$1499 MXN",img:["t2-1.png","t2-2.png","t2-3.png"]},
 {nombre:"Tenis 3",precio:"$1499 MXN",img:["t3-1.png","t3-2.png","t3-3.png"]},
@@ -215,21 +231,19 @@ tenis: [
 {nombre:"Tenis 9",precio:"$1499 MXN",img:["t9-1.png","t9-2.png","t9-3.png"]},
 {nombre:"Tenis 10",precio:"$1499 MXN",img:["t10-1.png","t10-2.png","t10-3.png"]}
 ]
-
 };
 </script>
 
-<!-- RENDER -->
 <div id="app"></div>
 
 <script>
-const app = document.getElementById("app");
+const app=document.getElementById("app");
 
 function render(){
-let html = "";
+let html="";
 
 for(let cat in data){
-html += `
+html+=`
 <div id="${cat}" class="section">
 <h2>${cat.toUpperCase()}</h2>
 <div class="grid">
@@ -253,12 +267,12 @@ ${data[cat].map(p=>`
 `;
 }
 
-app.innerHTML = html;
+app.innerHTML=html;
 }
 
 render();
 
-// WhatsApp + carrusel
+// WHATSAPP + CARRUSEL
 document.addEventListener("click",e=>{
 
 if(e.target.classList.contains("pedir")){
@@ -282,6 +296,27 @@ imgs[i].classList.remove("active");
 imgs[(i-1+imgs.length)%imgs.length].classList.add("active");
 }
 
+});
+
+// 🔥 ZOOM (NUEVO SIN ROMPER NADA)
+const zoomBox=document.createElement("div");
+zoomBox.id="zoomBox";
+zoomBox.style=`position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:9999;cursor:zoom-out;`;
+
+const zoomImg=document.createElement("img");
+zoomImg.style=`max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 0 25px rgba(255,255,255,.25);`;
+
+zoomBox.appendChild(zoomImg);
+document.body.appendChild(zoomBox);
+
+document.addEventListener("click",e=>{
+if(e.target.tagName==="IMG" && e.target.closest(".slider")){
+zoomImg.src=e.target.src;
+zoomBox.style.display="flex";
+}
+if(e.target.id==="zoomBox"){
+zoomBox.style.display="none";
+}
 });
 </script>
 
